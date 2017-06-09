@@ -16,4 +16,4 @@ urls[[1]]
 
 dates = html_children(news) %>% html_text(trim=T)#html_children()
 dates[dates%%2==1,]
-dates = lapply(1:length(dates), function(x))
+#dates = lapply(1:length(dates), function(x))
