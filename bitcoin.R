@@ -19,6 +19,7 @@ url = html_attr(reddit_bitcoin, "href") #Extracts URL of Top Redddit Post
 title = html_text(reddit_bitcoin) #Extracts Title of Top Redddit Post
 reddit_bitcoin = paste("Check out", (paste(title, url, sep=" here "))) #Suggests top 
 reddit_bitcoin
+class(reddit_bitcoin)
 
 #------------------------------------------------------------------------
 #STATUS UPDATE ON TWITTER
