@@ -1,7 +1,7 @@
 library(rvest)
 library(dplyr)
-
 library(twitteR)
+library(pipeR)
 
 
 consumer_key = 'doYt4LvCnp7Bz58FJRhPPL1nj'
@@ -16,11 +16,11 @@ setup_twitter_oauth(consumer_key, consumer_secret, access_token, access_secret)
 reddit_blockchain <- read_html("https://www.reddit.com/r/BlockChain/top/?sort=top&t=month") %>% html_node("#thing_t3_6dqfq1 > div.entry.unvoted > p.title > a")
 url = html_attr(reddit_blockchain, "href") #Extracts URL of Top Redddit Post
 title = html_text(reddit_blockchain) #Extracts Title of Top Redddit Post
-reddit_blockchain = paste("Check out this month's top Reddit post on Blockchain ", (paste(title, url, sep=" at "))) #Suggests top post
+reddit_blockchain = paste("Read this month's top reddit post on Blockchain ", (paste(title, url, sep=" here "))) #Suggests top post
 reddit_blockchain
 
 #------------------------------------------------------------------------
 #STATUS UPDATE ON TWITTER
 #------------------------------------------------------------------------
-blockchain_status = updateStatus(reddit_blockchain,bypassCharLimit=T)
+blockchain_status = tweet(reddit_blockchain,bypassCharLimit=T)
 
