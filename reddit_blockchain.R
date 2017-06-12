@@ -13,14 +13,14 @@ setup_twitter_oauth(consumer_key, consumer_secret, access_token, access_secret)
 #MINE BITCOIN REDDIT POST
 #------------------------------------------------------------------------
 
-reddit_bitcoin <- read_html("https://www.reddit.com/r/Bitcoin/top/?sort=top&t=day") %>% html_node("#thing_t3_6gly8r > div.entry.unvoted > p.title > a")
-url = html_attr(reddit_bitcoin, "href") #Extracts URL of Top Redddit Post
-title = html_text(reddit_bitcoin) #Extracts Title of Top Redddit Post
-reddit_bitcoin = paste("Check out today's top Reddit post on Bitcoin", (paste(title, url, sep=" at "))) #Suggests top 
-reddit_bitcoin
+reddit_blockchain <- read_html("https://www.reddit.com/r/BlockChain/top/?sort=top&t=month") %>% html_node("#thing_t3_6dqfq1 > div.entry.unvoted > p.title > a")
+url = html_attr(reddit_blockchain, "href") #Extracts URL of Top Redddit Post
+title = html_text(reddit_blockchain) #Extracts Title of Top Redddit Post
+reddit_blockchain = paste("Check out this month's top Reddit post on Blockchain ", (paste(title, url, sep=" at "))) #Suggests top post
+reddit_blockchain
 
 #------------------------------------------------------------------------
 #STATUS UPDATE ON TWITTER
 #------------------------------------------------------------------------
-bitcoin_status = updateStatus(reddit_bitcoin,bypassCharLimit=T)
+blockchain_status = updateStatus(reddit_blockchain,bypassCharLimit=T)
 
