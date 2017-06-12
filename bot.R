@@ -3,10 +3,10 @@ library(dplyr)
 library(rvest)
 library(mgcv)
 
-consumer_key = 'doYt4LvCnp7Bz58FJRhPPL1nj'
-consumer_secret = 'ZDTAsQZes2GGq7HtSmXXmV38bbtMV83McVQDy3WqGCw2GZnwGf'
-access_token = '859412098799030272-cZSQHV13JQt2wq5l61mGby0ceFqL5Ns'
-access_secret = 'j3RGzNbG0WWSVybnwwh1ScAXoM0gWWxLp2hxqPOBe5B6p'
+consumer_key = 'UiaBOjq2a6bgQrd3AwtvKJZWD'
+consumer_secret = 'qiDxxpyLz6PieqNw8YJsfvanBMfCZt5uMx2wK9pfTlzIMl1EbU'
+access_token = '874280764711612416-Zr51n68Ebk9G4PajTWDy0dkjnEn2eXA'
+access_secret = 'iBBzLpK65hZ0clxHW6mUPlJXqFLBdFJKMxDwUfrG2bmVr'
 setup_twitter_oauth(consumer_key, consumer_secret, access_token, access_secret)
 
 #------------------------------------------------------------------------
