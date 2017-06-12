@@ -13,7 +13,7 @@ setup_twitter_oauth(consumer_key, consumer_secret, access_token, access_secret)
 #MINE ARTICLES IN THE-BLOCKCHAIN WEBSITE
 #------------------------------------------------------------------------
 news <- read_html("http://www.the-blockchain.com/docs/index.php") %>% html_nodes(".thumbtext")
-log = list()
+#log = list()
 log = readRDS("log.rds")
 
 hrefs = html_children(news) %>% html_children() %>% html_attr("href")
