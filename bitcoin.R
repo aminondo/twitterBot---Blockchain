@@ -1,7 +1,5 @@
 library(rvest)
 library(dplyr)
-library(reshape2)
-library(ggplot2)
 
 library(twitteR)
 
