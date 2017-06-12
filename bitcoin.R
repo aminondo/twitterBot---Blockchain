@@ -3,17 +3,25 @@ library(dplyr)
 library(reshape2)
 library(ggplot2)
 
+library(twitteR)
 
-news <- read_html("http://www.the-blockchain.com/docs/index.php") %>% html_nodes(".thumbtext")
 
-hrefs = html_children(news) %>% html_children() %>% html_attr("href")
-hrefs = hrefs[!is.na(hrefs)]
-hrefs
-urls = lapply(1:length(hrefs), function(x) {
-  url = sprintf("http://www.the-blockchain.com/docs/%s",gsub(" ","%20",hrefs[x]))
-})
-urls[[1]]
+consumer_key = 'doYt4LvCnp7Bz58FJRhPPL1nj'
+consumer_secret = 'ZDTAsQZes2GGq7HtSmXXmV38bbtMV83McVQDy3WqGCw2GZnwGf'
+access_token = '859412098799030272-cZSQHV13JQt2wq5l61mGby0ceFqL5Ns'
+access_secret = 'j3RGzNbG0WWSVybnwwh1ScAXoM0gWWxLp2hxqPOBe5B6p'
+setup_twitter_oauth(consumer_key, consumer_secret, access_token, access_secret)
+#------------------------------------------------------------------------
+#MINE BITCOIN REDDIT POST
+#------------------------------------------------------------------------
+reddit_bitcoin <- read_html("https://www.reddit.com/r/Bitcoin/top/?sort=top&t=day") %>% html_node("#thing_t3_6gly8r > div.entry.unvoted > p.title > a")
+url = html_attr(reddit_bitcoin, "href") #Extracts URL of Top Redddit Post
+title = html_text(reddit_bitcoin) #Extracts Title of Top Redddit Post
+reddit_bitcoin = paste("Check out", (paste(title, url, sep=" here "))) #Suggests top 
+reddit_bitcoin
 
-dates = html_children(news) %>% html_text(trim=T)#html_children()
-dates[dates%%2==1,]
-#dates = lapply(1:length(dates), function(x))
+#------------------------------------------------------------------------
+#STATUS UPDATE ON TWITTER
+#------------------------------------------------------------------------
+status = tweet(reddit_bitcoin,bypassCharLimit=T)
+
